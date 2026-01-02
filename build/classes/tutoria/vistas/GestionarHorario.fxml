@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tutoria.controlador.GestionarHorarioControlador">
+   <children>
+      <Label layoutX="197.0" layoutY="32.0" text="Registrar Horario de Sesión" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="18.0" />
+         </font>
+      </Label>
+
+      <Pane layoutX="4.0" layoutY="22.0" prefHeight="303.0" prefWidth="608.0" style="-fx-background-color: white; -fx-background-radius: 10;">
+         <children>
+            
+            <Label layoutX="45.0" layoutY="35.0" text="Día de la sesión:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <DatePicker fx:id="fechaHorario" layoutX="45.0" layoutY="58.0" prefHeight="31.0" prefWidth="277.0" promptText="Selecciona la fecha" />
+
+            <Label layoutX="326.0" layoutY="35.0" text="Hora:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtHora" layoutX="326.0" layoutY="58.0" prefHeight="31.0" prefWidth="243.0" promptText="Ej. 10:00 AM" />
+
+            <Label layoutX="45.0" layoutY="111.0" text="Modalidad:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="cmbModalidad" layoutX="45.0" layoutY="134.0" prefHeight="31.0" prefWidth="528.0" promptText="Selecciona una opción..." />
+
+            <Label layoutX="45.0" layoutY="181.0" text="Lugar de tutoria:">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtLugar" layoutX="45.0" layoutY="204.0" prefHeight="31.0" prefWidth="528.0" promptText="Ej. Salón 101 o Link de Teams" />
+
+         </children>
+      </Pane>
+
+      <Button fx:id="btnGuardar" layoutX="325.0" layoutY="355.0" mnemonicParsing="false" onAction="#guardarHorario" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #004d40;" text="Guardar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      
+      <Button fx:id="btnCancelar" layoutX="155.0" layoutY="355.0" mnemonicParsing="false" onAction="#cancelar" prefHeight="31.0" prefWidth="120.0" style="-fx-background-color: #cc3333;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      
+   </children>
+</AnchorPane>

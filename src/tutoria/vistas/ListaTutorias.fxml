@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="750.0" style="-fx-background-color: #339C8E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tutoria.controlador.ListaTutoriasControlador">
+   <children>
+      <Label layoutX="26.0" layoutY="24.0" text="Tutorías Activas" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      
+      <TableView fx:id="tvTutorias" layoutX="26.0" layoutY="70.0" prefHeight="357.0" prefWidth="698.0">
+        <columns>
+            <TableColumn fx:id="colIdHorario" prefWidth="120.0" text="id Horario" />
+          <TableColumn fx:id="colFecha" prefWidth="120.0" text="Fecha" />
+          <TableColumn fx:id="colHora" prefWidth="100.0" text="Hora" />
+            <TableColumn fx:id="colModalidad" prefWidth="120.0" text="Modalidad" />
+            <TableColumn fx:id="colLugar" prefWidth="200.0" text="Lugar / Enlace" />
+            <TableColumn fx:id="colPersonal" prefWidth="150.0" text="No. Personal" />
+        </columns>
+      </TableView>
+      
+      <Button layoutX="634.0" layoutY="445.0" mnemonicParsing="false" onAction="#cerrarVentana" prefHeight="31.0" prefWidth="90.0" style="-fx-background-color: #cc3333;" text="Cerrar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>
