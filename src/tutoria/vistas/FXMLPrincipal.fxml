@@ -18,9 +18,10 @@
       </children>
     </Pane>
     
-      <Button layoutX="193.0" layoutY="185.0" mnemonicParsing="false" onAction="#gestionarTutoria" prefHeight="31.0" prefWidth="215.0" text="Gestionar tutoria" />
+      <Button layoutX="193.0" layoutY="165.0" mnemonicParsing="false" onAction="#gestionarTutoria" prefHeight="31.0" prefWidth="215.0" text="Gestionar tutoria" />
+      <Button layoutX="193.0" layoutY="200.0" mnemonicParsing="false" onAction="#gestionarProblematica" prefHeight="31.0" prefWidth="215.0" text="Gestionar Problematica" />
       
-      <Button layoutX="193.0" layoutY="229.0" mnemonicParsing="false" onAction="#asignarTutorado" prefHeight="31.0" prefWidth="215.0" text="Asignar Tutorado" />
+      <Button layoutX="193.0" layoutY="239.0" mnemonicParsing="false" onAction="#asignarTutorado" prefHeight="31.0" prefWidth="215.0" text="Asignar Tutorado" />
   </children>
   
 </AnchorPane>

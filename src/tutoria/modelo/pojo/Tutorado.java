@@ -8,6 +8,15 @@ public class Tutorado {
     private String observaciones;
     private String estado;
     private int idAsistencia;
+    private String problematica;
+
+    public String getProblematica() {
+        return problematica;
+    }
+
+    public void setProblematica(String problematica) {
+        this.problematica = problematica;
+    }
     
     // AGREGEGADO: Necesario para la asignación y filtrado por tutor
     private int fkTutor; 

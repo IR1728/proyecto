@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tutoria.controlador.RegistrarProblematicaControlador">
+   <children>
+      <Pane prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #2c3e50;">
+         <children>
+            <Label layoutX="24.0" layoutY="14.0" text="Registrar Problemática" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <Label layoutX="36.0" layoutY="85.0" text="Alumno:" textFill="#7f8c8d">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label fx:id="lbNombreAlumno" layoutX="108.0" layoutY="85.0" prefHeight="20.0" prefWidth="450.0" text="Nombre del Alumno Seleccionado">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="36.0" layoutY="130.0" text="Título de la Problemática:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="tfTitulo" layoutX="36.0" layoutY="155.0" prefHeight="30.0" prefWidth="526.0" promptText="Ej. Dificultades con Matemáticas Discretas" />
+      <Label layoutX="36.0" layoutY="205.0" text="Descripción Detallada:">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <TextArea fx:id="taDescripcion" layoutX="36.0" layoutY="230.0" prefHeight="130.0" prefWidth="526.0" promptText="Describa la situación académica o personal del tutorado..." wrapText="true" />
+      <Button fx:id="btnGuardar" layoutX="466.0" layoutY="390.0" mnemonicParsing="false" onAction="#clicGuardar" prefHeight="35.0" prefWidth="96.0" style="-fx-background-color: #27ae60; -fx-cursor: hand;" text="Guardar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      <Button fx:id="btnCancelar" layoutX="352.0" layoutY="390.0" mnemonicParsing="false" onAction="#clicCancelar" prefHeight="35.0" prefWidth="96.0" style="-fx-background-color: #e74c3c; -fx-cursor: hand;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+   </children>
+</AnchorPane>

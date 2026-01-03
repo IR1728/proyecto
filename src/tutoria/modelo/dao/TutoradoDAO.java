@@ -50,23 +50,20 @@ public static ArrayList<Tutorado> obtenerTodosLosTutorados(Connection conexion) 
         return resultado;
     }
     
-    public static ArrayList<Tutorado> obtenerTutoradosPorProfesor(String noPersonal, Connection conexion) throws SQLException {
+    public static ArrayList<Tutorado> obtenerTutoradosPorProfesor(int noPersonal, Connection conexion) throws SQLException {
         ArrayList<Tutorado> lista = new ArrayList<>();
         if(conexion != null){
             
-            // CAMBIO 1: Agregamos 'a.id_asistencia' y 'a.observaciones' al SELECT.
-            // CAMBIO 2: Corregimos el ON del JOIN para unir por 'matricula' (t.matricula = a.fk_matricula).
-            //           Si dejamos 't.fk_tutor = a.fk_tutor', se repetirían alumnos incorrectamente.
-            //           Al ser LEFT JOIN, si no hay asistencia, traerá NULL pero el alumno SÍ aparecerá en la lista.
-            
+        System.out.println("llegué4"+noPersonal);
             String sql = "SELECT t.matricula, t.nombre, t.carrera, a.id_asistencia, " +
-                     "a.estatus_asistencia AS estado, a.observaciones " +
+                     "a.estatus_asistencia AS estado, a.observaciones,p.descripcion " +
                      "FROM tutorados t " +
                      "LEFT JOIN asistencia a ON t.matricula = a.fk_matricula " +
+                    "LEFT JOIN problematica p ON t.matricula = p.matricula " +
                      "WHERE t.fk_tutor = ?";
             
             PreparedStatement ps = conexion.prepareStatement(sql);
-            ps.setString(1, noPersonal);
+            ps.setInt(1, noPersonal);
             ResultSet rs = ps.executeQuery();
             
             while(rs.next()){
@@ -85,6 +82,7 @@ public static ArrayList<Tutorado> obtenerTodosLosTutorados(Connection conexion) 
                 
                 t.setEstado(estatus);
                 t.setObservaciones(observaciones);
+                t.setProblematica(rs.getString("descripcion"));
                 
                 // Usamos el estatus para llenar la columna visual 'Evaluado'
                 // Si es null (no tiene asistencia), aparecerá como null en la tabla (o puedes poner "Pendiente")
@@ -97,33 +95,7 @@ public static ArrayList<Tutorado> obtenerTodosLosTutorados(Connection conexion) 
         }
         return lista;
     }
-    public static ArrayList<Tutorado> obtenerTutoradosPorProfesor(int numeroPersonal, Connection conexion) throws SQLException {
-    ArrayList<Tutorado> lista = new ArrayList<>();
-    if (conexion != null) {
-        // La consulta busca coincidencia numérica
-        String sql = "SELECT t.matricula, t.nombre, t.carrera " +
-                     "FROM tutorados t " +
-                     "WHERE t.fk_tutor = ?"; 
-        
-        java.sql.PreparedStatement ps = conexion.prepareStatement(sql);
-        
-        // RESTAURADO: setInt
-        ps.setInt(1, numeroPersonal);
-        
-        java.sql.ResultSet rs = ps.executeQuery();
-        while (rs.next()) {
-            Tutorado t = new Tutorado();
-            t.setMatricula(rs.getString("matricula"));
-            t.setNombre(rs.getString("nombre"));
-            t.setCarrera(rs.getString("carrera"));
-            // t.setFkTutor(numeroPersonal); // Si lo necesitas setear
-            lista.add(t);
-        }
-        // ... cerrar conexiones ...
-    }
-    return lista;
-    }
-
+  
     /**
      * Asigna (o reasigna) un tutor a un alumno específico.
      */

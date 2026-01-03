@@ -21,6 +21,7 @@
           <TableColumn fx:id="colNombre" prefWidth="300.0" text="Nombre Completo" />
           <TableColumn fx:id="colCarrera" prefWidth="246.0" text="Carrera" />
            <TableColumn fx:id="colEstado" prefWidth="246.0" text="Estado" />
+             <TableColumn fx:id="colProblematica" prefWidth="246.0" text="Problematica" />
         </columns>
       </TableView>
       
