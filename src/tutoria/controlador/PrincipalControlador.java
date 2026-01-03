@@ -25,11 +25,7 @@ public class PrincipalControlador {
 
     public void obtenerSesion(Profesor profesorSesion) {
         lbNombre.setText(profesorSesion.getNombre() + " " + profesorSesion.getApellidoPaterno() + " " + profesorSesion.getApellidoMaterno());
-        
-        // CORRECCIÓN: Los Label solo aceptan Texto (String).
-        // Usamos String.valueOf() por seguridad.
         lbNumPersonal.setText(String.valueOf(profesorSesion.getNoPersonal())); 
-        
         lbRol.setText("Rol: " + profesorSesion.getRol());
     }
 
@@ -38,25 +34,29 @@ public class PrincipalControlador {
             FXMLLoader cargador = new FXMLLoader(Tutoria.class.getResource("vistas/" + nombreArchivo + ".fxml"));
             Parent vista = cargador.load();
 
-            // CASO 1: GESTIONAR TUTORÍA (Horarios)
+            // CASO 1: GESTIONAR TUTORÍA (Menú Secundario)
             if (accion == 2) {
                 GestionarTutoriaControlador controlador = cargador.getController();
                 try {
                     int numPersonal = Integer.parseInt(lbNumPersonal.getText());
-                    controlador.inicializarDatos(numPersonal);
+                    
+                    // --- CORRECCIÓN IMPORTANTE ---
+                    // Recuperamos el Rol y se lo pasamos al controlador para que pueda validar botones
+                    String rol = lbRol.getText(); 
+                    controlador.inicializarDatos(numPersonal, rol);
+                    // -----------------------------
+                    
                 } catch (NumberFormatException e) {
                     Utilidades.mostrarAlertaSimple("Error", "El número de personal no es válido.", Alert.AlertType.ERROR);
                     return;
                 }
             } 
-             System.out.println("pasé aquí");
-            // CASO 2: GESTIONAR PROBLEMÁTICAS (NUEVO CÓDIGO AGREGADO)
-            if (accion== 5) {
+            
+            // CASO 2: GESTIONAR PROBLEMÁTICAS
+            else if (accion == 5) {
                 GestionarProblematicaControlador controlador = cargador.getController();
                 try {
-                    // Recuperamos el ID del tutor para pasarlo a la siguiente ventana
                     int numPersonal = Integer.parseInt(lbNumPersonal.getText());
-                    System.out.println("lleguéaquí nuevo"+ numPersonal);
                     controlador.inicializarDatos(numPersonal);
                 } catch (NumberFormatException e) {
                     Utilidades.mostrarAlertaSimple("Error", "No se pudo recuperar el ID del profesor.", Alert.AlertType.ERROR);
@@ -65,9 +65,8 @@ public class PrincipalControlador {
             }
 
             // CASO 3: COORDINADOR
-            if (accion == 4) {
+            else if (accion == 4) {
                 AsignarTutoradoControlador controlador = cargador.getController();
-                // Si el coordinador necesita datos, se pasarían aquí
             }
 
             Scene escena = new Scene(vista);
@@ -99,13 +98,11 @@ public class PrincipalControlador {
     
     @FXML
     private void gestionarTutoria(ActionEvent event){
-        if(lbRol.getText().toUpperCase().contains("TUTOR")){
-            navegarA("Gestionar Horario", "GestionarTutoria", 2);
-        } else {
-            Utilidades.mostrarAlertaSimple("Acceso Denegado", "Se requiere rol de Tutor", Alert.AlertType.WARNING);
-        }
+        // Validación inicial para entrar al menú
+        // (Aunque luego validaremos cada botón dentro, es bueno validar aquí también)
+        navegarA("Gestionar Horario", "GestionarTutoria", 2);
     }
-    
+  
     @FXML
     private void gestionarProblematica(ActionEvent event) {
         if(lbRol.getText().toUpperCase().contains("TUTOR")) {

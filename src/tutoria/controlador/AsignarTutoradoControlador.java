@@ -65,7 +65,7 @@ public class AsignarTutoradoControlador implements Initializable {
 
     private void cargarListaProfesores() {
         try {
-            // Carga la lista de profesores para el ComboBox
+            
             ArrayList<Profesor> profesoresBD = ProfesorDAO.obtenerListaProfesores(ConexionDB.abrirConexionBD());
             ObservableList<Profesor> listaProfesores = FXCollections.observableArrayList(profesoresBD);
             cbTutores.setItems(listaProfesores);
@@ -96,13 +96,12 @@ private void guardarAsignacion(Tutorado alumno, Profesor profesor) {
             Connection conexion = ConexionDB.abrirConexionBD();
             if (conexion != null) {
                 
-                // CAMBIO: Ya no usamos Integer.parseInt().
-                // El profesor ya tiene el número como int.
+                
                 int noPersonalInt = profesor.getNoPersonal(); 
 
                 System.out.println("Asignando al profesor: " + noPersonalInt); // Debug
 
-                // Enviamos el int directo al DAO
+               
                 boolean exito = TutoradoDAO.asignarTutorAAlumno(alumno.getMatricula(), noPersonalInt, conexion);
                 
                 if (exito) {
@@ -114,7 +113,7 @@ private void guardarAsignacion(Tutorado alumno, Profesor profesor) {
                 conexion.close();
             }
         } catch (SQLException ex) {
-            // ... logs ...
+            
             mostrarAlerta("Error", "Error de base de datos.");
         }
 
