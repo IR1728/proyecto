@@ -1,16 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="tutoria.controlador.GestionarTutoriaControlador">
-      <children>
-        <Button layoutX="193.0" layoutY="145.0" mnemonicParsing="false" onAction="#registrarHorarios" prefHeight="31.0" prefWidth="215.0" text="Registrar horario" />
-        <Button layoutX="193.0" layoutY="228.0" mnemonicParsing="false" onAction="#registrarAsistenciaTutorado" prefHeight="31.0" prefWidth="215.0" text="Registrar asistencia del tutorado" />
-        <Button layoutX="193.0" layoutY="185.0" mnemonicParsing="false" onAction="#modificarHorario" prefHeight="31.0" prefWidth="215.0" text="Actualizar horario existente" />
-        <Button layoutX="193.0" layoutY="269.0" mnemonicParsing="false" onAction="#registrarFechaTutoria" prefHeight="31.0" prefWidth="215.0" text="Registrar fecha de tutoría" />
-      </children>
+<AnchorPane id="AnchorPane" prefHeight="450.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tutoria.controlador.GestionarTutoriaControlador">
+   <children>
+      <Pane prefHeight="60.0" prefWidth="600.0" style="-fx-background-color: #3A128C;">
+         <children>
+            <Label layoutX="24.0" layoutY="14.0" text="Gestión de Tutoría" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+
+      <Button layoutX="193.0" layoutY="100.0" mnemonicParsing="false" onAction="#registrarHorarios" prefHeight="35.0" prefWidth="215.0" text="Registrar Horario" />
+      
+      <Button layoutX="193.0" layoutY="150.0" mnemonicParsing="false" onAction="#modificarHorario" prefHeight="35.0" prefWidth="215.0" text="Actualizar Horario" />
+      
+      <Button layoutX="193.0" layoutY="200.0" mnemonicParsing="false" onAction="#registrarAsistenciaTutorado" prefHeight="35.0" prefWidth="215.0" text="Registrar Asistencia" />
+
+      <Button layoutX="193.0" layoutY="250.0" mnemonicParsing="false" onAction="#registrarFechaTutoria" prefHeight="35.0" prefWidth="215.0" text="Registrar Fechas (Coord.)" />
+
+      <Button layoutX="193.0" layoutY="300.0" mnemonicParsing="false" onAction="#gestionarReporteTutoria" prefHeight="35.0" prefWidth="215.0" text="Gestionar Reporte de Tutoría" />
+
+   </children>
 </AnchorPane>

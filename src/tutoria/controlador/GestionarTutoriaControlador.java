@@ -18,27 +18,30 @@ import utilidad.Utilidades;
 
 public class GestionarTutoriaControlador implements Initializable {
 
+    // Estas etiquetas pueden ser null si no están en el FXML, por eso NO debemos usarlas para lógica
     @FXML
     private Label lbNombre;
     @FXML
-    private Label lbRol; // Si decides mostrarlo visualmente
+    private Label lbRol; 
+    @FXML
+    private Label lbNumPersonal;
     
+    // Variables lógicas para guardar los datos de sesión de forma segura
     private int numeroPersonal;
-    private String rolActual; // VARIABLE NUEVA PARA GUARDAR EL ROL
+    private String rolActual = ""; // Inicializamos vacío para evitar NullPointer
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }    
     
-    // --- 1. MODIFICAMOS ESTE MÉTODO PARA RECIBIR EL ROL ---
+    // Método que recibe los datos desde el Menú Principal
     public void inicializarDatos(int numeroPersonal, String rol){
         this.numeroPersonal = numeroPersonal;
         this.rolActual = rol;
         
-        // Opcional: Mostrarlo en la etiqueta si existe en el FXML
+        // Solo intentamos poner texto si las etiquetas existen en el FXML
         if(lbRol != null) lbRol.setText(rol);
-        
-        System.out.println("Usuario: " + numeroPersonal + " | Rol: " + rolActual);
+        if(lbNumPersonal != null) lbNumPersonal.setText(String.valueOf(numeroPersonal));
     }
 
     private void navegarA(String titulo, String nombreArchivo, int accion) {
@@ -49,15 +52,21 @@ public class GestionarTutoriaControlador implements Initializable {
             if (accion == 1) { // Gestionar Horario
                 GestionarHorarioControlador ctrl = cargador.getController();
                 ctrl.asignarNumeroPersonal(this.numeroPersonal, accion);
-            } else if (accion == 2) { // Lista Tutorias
+            } 
+            else if (accion == 2) { // Lista Tutorias (Actualizar)
                 ListaTutoriasControlador ctrl = cargador.getController();
                 ctrl.asignarNumeroPersonal(this.numeroPersonal, accion);
-            } else if (accion == 3) { // Lista Tutorado
+            }
+            else if (accion == 3) { // Asistencia
                 ListaTutoradoControlador ctrl = cargador.getController();
                 ctrl.asignarNumeroPersonal(this.numeroPersonal, accion);
-            } else if (accion == 5) { // Registrar Fechas
+            }
+            else if (accion == 5) { // Registrar Fechas
                  RegistrarFechaTutoriaControlador ctrl = cargador.getController();
-                 // No requiere datos de sesión
+            }
+            else if (accion == 7) { // Reporte de Tutoría
+                GestionarReporteTutoriaControlador ctrl = cargador.getController();
+                ctrl.inicializarDatos(this.numeroPersonal);
             }
             
             Scene escena = new Scene(vista);
@@ -73,49 +82,8 @@ public class GestionarTutoriaControlador implements Initializable {
         }
     }
 
-    // --- VALIDACIÓN POR BOTÓN ---
-
-    @FXML
-    private void registrarHorarios(ActionEvent event){
-        // VALIDACIÓN: Solo Tutores
-        if (esTutor()) {
-            navegarA("Administración de horario", "GestionarHorario", 1);
-        } else {
-            denegarAcceso("Tutor");
-        }
-    }
-
-    @FXML
-    private void modificarHorario(ActionEvent event){
-        // VALIDACIÓN: Solo Tutores
-        if (esTutor()) {
-            navegarA("Administración de horario", "ListaTutorias", 2);
-        } else {
-            denegarAcceso("Tutor");
-        }
-    }
-  
-    @FXML
-    private void registrarAsistenciaTutorado(ActionEvent event){
-        // VALIDACIÓN: Solo Tutores
-        if (esTutor()) {
-            navegarA("Lista de tutorados", "ListaTutorado", 3);     
-        } else {
-            denegarAcceso("Tutor");
-        }          
-    }
-
-    @FXML
-    private void registrarFechaTutoria(ActionEvent event) {
-        // VALIDACIÓN: Solo Coordinadores
-        if (esCoordinador()) {
-            navegarA("Configuración de Fechas", "RegistrarFechaTutoria", 5);
-        } else {
-             denegarAcceso("Coordinador");
-        }
-    }
-    
-    // --- MÉTODOS AUXILIARES DE VALIDACIÓN ---
+    // --- MÉTODOS DE VALIDACIÓN ---
+    // Usamos la variable string rolActual, NO la etiqueta gráfica lbRol
     
     private boolean esTutor() {
         return rolActual != null && rolActual.toUpperCase().contains("TUTOR");
@@ -124,8 +92,52 @@ public class GestionarTutoriaControlador implements Initializable {
     private boolean esCoordinador() {
         return rolActual != null && rolActual.toUpperCase().contains("COORDINADOR");
     }
-    
-    private void denegarAcceso(String rolRequerido) {
-        Utilidades.mostrarAlertaSimple("Acceso Denegado", "Esta función es exclusiva para el rol de " + rolRequerido + ".", Alert.AlertType.WARNING);
+
+    // --- ACCIONES DE BOTONES ---
+
+    @FXML
+    private void registrarHorarios(ActionEvent event){
+        if (esTutor()) {
+            navegarA("Administración de horario", "GestionarHorario", 1);
+        } else {
+            Utilidades.mostrarAlertaSimple("Acceso Denegado", "Se requiere rol de Tutor.", Alert.AlertType.WARNING);
+        }
+    }
+
+    @FXML
+    private void modificarHorario(ActionEvent event){
+        if (esTutor()) {
+            navegarA("Administración de horario", "ListaTutorias", 2);
+        } else {
+            Utilidades.mostrarAlertaSimple("Acceso Denegado", "Se requiere rol de Tutor.", Alert.AlertType.WARNING);
+        }
+    }
+  
+    @FXML
+    private void registrarAsistenciaTutorado(ActionEvent event){
+        if (esTutor()) {
+            navegarA("Lista de tutorados", "ListaTutorado", 3);     
+        } else {
+            Utilidades.mostrarAlertaSimple("Acceso Denegado", "Se requiere rol de Tutor.", Alert.AlertType.WARNING);
+        }          
+    }
+
+    @FXML
+    private void registrarFechaTutoria(ActionEvent event) {
+        if (esCoordinador()) {
+            navegarA("Configuración de Fechas", "RegistrarFechaTutoria", 5);
+        } else {
+             Utilidades.mostrarAlertaSimple("Acceso Denegado", "Se requiere rol de Coordinador.", Alert.AlertType.WARNING);
+        }
+    }
+
+    @FXML
+    private void gestionarReporteTutoria(ActionEvent event) {
+        // AQUÍ ESTABA EL ERROR: Usamos esTutor() que revisa la variable, no la etiqueta null
+        if (esTutor()) {
+            navegarA("Generar Reporte de Tutoría", "GestionarReporteTutoria", 7);
+        } else {
+            Utilidades.mostrarAlertaSimple("Acceso Denegado", "Función exclusiva para Tutores.", Alert.AlertType.WARNING);
+        }
     }
 }
