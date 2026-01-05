@@ -18,7 +18,6 @@ import utilidad.Utilidades;
 
 public class GestionarTutoriaControlador implements Initializable {
 
-    // Estas etiquetas pueden ser null si no están en el FXML, por eso NO debemos usarlas para lógica
     @FXML
     private Label lbNombre;
     @FXML
@@ -26,20 +25,17 @@ public class GestionarTutoriaControlador implements Initializable {
     @FXML
     private Label lbNumPersonal;
     
-    // Variables lógicas para guardar los datos de sesión de forma segura
     private int numeroPersonal;
-    private String rolActual = ""; // Inicializamos vacío para evitar NullPointer
+    private String rolActual = ""; 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
     }    
     
-    // Método que recibe los datos desde el Menú Principal
     public void inicializarDatos(int numeroPersonal, String rol){
         this.numeroPersonal = numeroPersonal;
         this.rolActual = rol;
         
-        // Solo intentamos poner texto si las etiquetas existen en el FXML
         if(lbRol != null) lbRol.setText(rol);
         if(lbNumPersonal != null) lbNumPersonal.setText(String.valueOf(numeroPersonal));
     }
@@ -49,24 +45,27 @@ public class GestionarTutoriaControlador implements Initializable {
             FXMLLoader cargador = new FXMLLoader(Tutoria.class.getResource("vistas/" + nombreArchivo + ".fxml"));
             Parent vista = cargador.load();
    
-            if (accion == 1) { // Gestionar Horario
+            if (accion == 1) { 
                 GestionarHorarioControlador ctrl = cargador.getController();
                 ctrl.asignarNumeroPersonal(this.numeroPersonal, accion);
             } 
-            else if (accion == 2) { // Lista Tutorias (Actualizar)
-                ListaTutoriasControlador ctrl = cargador.getController();
+            else if (accion == 2) { 
+                ListaTutoriaControlador ctrl = cargador.getController();
                 ctrl.asignarNumeroPersonal(this.numeroPersonal, accion);
             }
-            else if (accion == 3) { // Asistencia
+            else if (accion == 3) { 
                 ListaTutoradoControlador ctrl = cargador.getController();
                 ctrl.asignarNumeroPersonal(this.numeroPersonal, accion);
             }
-            else if (accion == 5) { // Registrar Fechas
+            else if (accion == 5) { 
                  RegistrarFechaTutoriaControlador ctrl = cargador.getController();
             }
-            else if (accion == 7) { // Reporte de Tutoría
+            else if (accion == 6) { 
+    RegistrarPlaneacionControlador ctrl = cargador.getController();
+}
+            else if (accion == 7) { 
                 GestionarReporteTutoriaControlador ctrl = cargador.getController();
-                ctrl.inicializarDatos(this.numeroPersonal);
+                ctrl.inicializarDatos(this.numeroPersonal, this.rolActual);
             }
             
             Scene escena = new Scene(vista);
@@ -82,9 +81,6 @@ public class GestionarTutoriaControlador implements Initializable {
         }
     }
 
-    // --- MÉTODOS DE VALIDACIÓN ---
-    // Usamos la variable string rolActual, NO la etiqueta gráfica lbRol
-    
     private boolean esTutor() {
         return rolActual != null && rolActual.toUpperCase().contains("TUTOR");
     }
@@ -93,8 +89,30 @@ public class GestionarTutoriaControlador implements Initializable {
         return rolActual != null && rolActual.toUpperCase().contains("COORDINADOR");
     }
 
-    // --- ACCIONES DE BOTONES ---
-
+    @FXML
+    private void clicRegistrarPlaneacion(ActionEvent event) {
+        if (esCoordinador()) {
+            try {
+                FXMLLoader cargador = new FXMLLoader(getClass().getResource("/tutoria/vistas/RegistrarPlaneacion.fxml"));
+                Parent root = cargador.load();
+                
+                RegistrarPlaneacionControlador ctrl = cargador.getController();
+                ctrl.inicializarDatos(this.numeroPersonal); 
+                
+                Scene escena = new Scene(root);
+                Stage stage = new Stage();
+                stage.setScene(escena);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+                
+            } catch (IOException e) {
+                e.printStackTrace();
+                Utilidades.mostrarAlertaSimple("Error", "No se pudo abrir la ventana de planeación.", Alert.AlertType.ERROR);
+            }
+        } else {
+             Utilidades.mostrarAlertaSimple("Acceso Denegado", "Se requiere rol de Coordinador.", Alert.AlertType.WARNING);
+        }
+    }
     @FXML
     private void registrarHorarios(ActionEvent event){
         if (esTutor()) {
@@ -133,11 +151,12 @@ public class GestionarTutoriaControlador implements Initializable {
 
     @FXML
     private void gestionarReporteTutoria(ActionEvent event) {
-        // AQUÍ ESTABA EL ERROR: Usamos esTutor() que revisa la variable, no la etiqueta null
         if (esTutor()) {
             navegarA("Generar Reporte de Tutoría", "GestionarReporteTutoria", 7);
         } else {
             Utilidades.mostrarAlertaSimple("Acceso Denegado", "Función exclusiva para Tutores.", Alert.AlertType.WARNING);
         }
     }
+  
+
 }

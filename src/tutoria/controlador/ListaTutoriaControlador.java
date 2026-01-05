@@ -25,7 +25,7 @@ import tutoria.modelo.ConexionDB;
 import tutoria.modelo.dao.HorarioDAO;
 import tutoria.modelo.pojo.Horario; // Asegúrate de importar tu POJO Horario
 
-public class ListaTutoriasControlador implements Initializable {
+public class ListaTutoriaControlador implements Initializable {
 
     @FXML
     private TableView<Horario> tvTutorias;

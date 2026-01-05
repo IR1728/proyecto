@@ -39,9 +39,6 @@ public class PrincipalControlador {
                 GestionarTutoriaControlador controlador = cargador.getController();
                 try {
                     int numPersonal = Integer.parseInt(lbNumPersonal.getText());
-                    
-                    // --- CORRECCIÓN IMPORTANTE ---
-                    // Recuperamos el Rol y se lo pasamos al controlador para que pueda validar botones
                     String rol = lbRol.getText(); 
                     controlador.inicializarDatos(numPersonal, rol);
                     // -----------------------------

@@ -17,25 +17,25 @@
 
 <AnchorPane id="AnchorPane" prefHeight="406.0" prefWidth="622.0" style="-fx-background-color: #339C8E;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tutoria.controlador.InicioSesionControlador">
    <children>
-      <Label layoutX="235.0" layoutY="41.0" text="Bienvenido (a)">
+      <Label layoutX="344.0" layoutY="35.0" text="Bienvenido (a)">
          <font>
             <Font name="System Bold" size="24.0" />
          </font>
       </Label>
-      <Label layoutX="101.0" layoutY="76.0" prefHeight="35.0" prefWidth="433.0" text="Para iniciar sesión, ingresa tu numero de personal y contraseña:" textAlignment="CENTER" wrapText="true" />
-      <TextField fx:id="txtPersonal" layoutX="101.0" layoutY="144.0" prefHeight="29.0" prefWidth="394.0" promptText="jperez001" />
-      <Label layoutX="100.0" layoutY="124.0" style="color:white ;" text="Numero de personal">
+      <Label layoutX="224.0" layoutY="70.0" prefHeight="35.0" prefWidth="394.0" text="Para iniciar sesión, ingresa tu numero de personal y contraseña:" textAlignment="CENTER" wrapText="true" />
+      <TextField fx:id="txtPersonal" layoutX="228.0" layoutY="144.0" prefHeight="29.0" prefWidth="394.0" promptText="jperez001" />
+      <Label layoutX="228.0" layoutY="124.0" style="color:white ;" text="Numero de personal">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <Label layoutX="101.0" layoutY="212.0" text="Contraseña">
+      <Label layoutX="228.0" layoutY="214.0" text="Contraseña">
          <font>
             <Font size="14.0" />
          </font>
       </Label>
-      <PasswordField fx:id="txtPassword" layoutX="101.0" layoutY="232.0" prefHeight="31.0" prefWidth="394.0" promptText="******" />
-      <Button fx:id="btnIngresar" layoutX="273.0" layoutY="318.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="91.0" text="Acceder" />
+      <PasswordField fx:id="txtPassword" layoutX="228.0" layoutY="232.0" prefHeight="31.0" prefWidth="394.0" promptText="******" />
+      <Button fx:id="btnIngresar" layoutX="400.0" layoutY="318.0" mnemonicParsing="false" onAction="#login" prefHeight="27.0" prefWidth="91.0" text="Acceder" />
       <Label fx:id="lblErrorPersonal" layoutX="184.0" layoutY="193.0" prefHeight="21.0" prefWidth="268.0" textFill="#bb1616">
          <font>
             <Font name="System Bold" size="14.0" />

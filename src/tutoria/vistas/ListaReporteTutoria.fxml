@@ -1,11 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tutoria.vistas.ListaReporteTutoriaControlador">
-    
+<AnchorPane id="AnchorPane" prefHeight="500.0" prefWidth="700.0" style="-fx-background-color: #f4f4f4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="tutoria.controlador.ListaReporteTutoriaControlador">
+   <children>
+      <Pane prefHeight="60.0" prefWidth="700.0" style="-fx-background-color: #3A128C;">
+         <children>
+            <Label layoutX="24.0" layoutY="14.0" text="Historial de Reportes de Tutoría" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+
+      <TableView fx:id="tbReportes" layoutX="25.0" layoutY="85.0" prefHeight="330.0" prefWidth="650.0">
+        <columns>
+          <TableColumn fx:id="colPeriodo" prefWidth="200.0" text="Periodo / Sesión" />
+          <TableColumn fx:id="colDescripcion" prefWidth="300.0" text="Descripción General" />
+            <TableColumn fx:id="colEstatus" prefWidth="148.0" text="Estatus" />
+        </columns>
+      </TableView>
+
+      <Button fx:id="btnExportar" layoutX="25.0" layoutY="435.0" mnemonicParsing="false" onAction="#clicExportar" prefHeight="35.0" prefWidth="150.0" style="-fx-background-color: #2980b9;" text="Exportar a TXT" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+
+      <Button fx:id="btnCerrar" layoutX="575.0" layoutY="435.0" mnemonicParsing="false" onAction="#clicCerrar" prefHeight="35.0" prefWidth="100.0" style="-fx-background-color: #e74c3c;" text="Cerrar" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="14.0" />
+         </font>
+      </Button>
+      
+      <Label layoutX="190.0" layoutY="444.0" text="* Doble clic en una fila para ver detalles" textFill="#757575" />
+   </children>
 </AnchorPane>

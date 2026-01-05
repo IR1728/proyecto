@@ -27,7 +27,9 @@
 
       <Button layoutX="193.0" layoutY="250.0" mnemonicParsing="false" onAction="#registrarFechaTutoria" prefHeight="35.0" prefWidth="215.0" text="Registrar Fechas (Coord.)" />
 
-      <Button layoutX="193.0" layoutY="300.0" mnemonicParsing="false" onAction="#gestionarReporteTutoria" prefHeight="35.0" prefWidth="215.0" text="Gestionar Reporte de Tutoría" />
+      <Button layoutX="193.0" layoutY="300.0" mnemonicParsing="false" onAction="#clicRegistrarPlaneacion" prefHeight="35.0" prefWidth="215.0" text="Registrar Planeación (Coord.)" />
+
+      <Button layoutX="193.0" layoutY="350.0" mnemonicParsing="false" onAction="#gestionarReporteTutoria" prefHeight="35.0" prefWidth="215.0" text="Gestionar Reporte de Tutoría" />
 
    </children>
 </AnchorPane>
