@@ -95,13 +95,12 @@ private Horario horarioEdicion;
     }
    
    public void asignarNumeroPersonal(int numeroPersonal, int accion){
-        // CORRECCIÓN: Asignación directa (int a int)
+      
         this.numeroPersonal = numeroPersonal;
         
         this.accion = accion;
         
-        // Opcional: Si necesitas cargar datos inmediatamente al recibir el ID
-        // cargarHorario(); 
+      
     }
 
 

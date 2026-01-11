@@ -3,15 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/modelo/dao/PlaneacionTutoriaDAO.java</file>
+            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/controlador/RegistrarPlaneacionControlador.java</file>
+            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/vistas/RegistrarPlaneacion.fxml</file>
             <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/controlador/GestionarTutoriaControlador.java</file>
-            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/vistas/ListaTutoria.fxml</file>
-            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/vistas/ListaReporteTutoria.fxml</file>
-            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/controlador/GestionarReporteTutoriaControlador.java</file>
-            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/controlador/ListaReporteTutoriaControlador.java</file>
-            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/vistas/GestionarTutoria.fxml</file>
-            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/vistas/GestionarReporteTutoria.fxml</file>
-            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/vistas/RegistrarReporteTutoria.fxml</file>
-            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/controlador/RegistrarReporteTutoriaControlador.java</file>
+            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/vistas/Principal.fxml</file>
+            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/Recursos/universidad-veracruzana-logo-uv.png</file>
+            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/controlador/InicioSesionControlador.java</file>
+            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/vistas/GestionarProblematica.fxml</file>
+            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/controlador/RegistrarProblematicaControlador.java</file>
+            <file>file:/home/jiran/NetBeansProjects/Tutorias/src/tutoria/controlador/GestionarHorarioControlador.java</file>
         </group>
     </open-files>
 </project-private>

@@ -39,51 +39,49 @@ public class RegistrarFechaTutoriaControlador implements Initializable {
         cargarSesiones();
     }    
     
-    // Método basado en el calendario visualizado (image_33be5f.png)
+  
     private void cargarPeriodos() {
         ObservableList<String> periodos = FXCollections.observableArrayList();
-        // Agregamos el periodo actual visible en tu imagen
         periodos.add("Febrero - Julio 2026");
         periodos.add("Agosto 2026 - Enero 2027");
         cbPeriodo.setItems(periodos);
         
-        // Seleccionamos el primero por defecto
         cbPeriodo.getSelectionModel().selectFirst();
     }
     
     private void cargarSesiones() {
         ObservableList<Integer> sesiones = FXCollections.observableArrayList();
-        sesiones.addAll(1, 2, 3); // Generalmente son 3 sesiones por semestre
+        sesiones.addAll(1, 2, 3);
         cbSesion.setItems(sesiones);
     }
 
     @FXML
     private void clicGuardar(ActionEvent event) {
-        // 1. Validaciones
+      
         if (cbPeriodo.getValue() == null || cbSesion.getValue() == null || 
             dpInicio.getValue() == null || dpFin.getValue() == null) {
             mostrarAlerta("Campos vacíos", "Por favor completa toda la información del periodo.", Alert.AlertType.WARNING);
             return;
         }
         
-        // 2. Validar consistencia de fechas (Inicio no puede ser después de Fin)
+        
         if (dpInicio.getValue().isAfter(dpFin.getValue())) {
             mostrarAlerta("Fechas inválidas", "La fecha de inicio no puede ser posterior a la fecha de cierre.", Alert.AlertType.WARNING);
             return;
         }
 
-        // 3. Crear Objeto POJO
+       
         String periodo = cbPeriodo.getValue();
         int sesion = cbSesion.getValue();
-        // Convertimos LocalDate a String (formato estándar SQL YYYY-MM-DD)
+        
         String fechaInicio = dpInicio.getValue().toString();
         String fechaFin = dpFin.getValue().toString();
         
         FechaTutoria nuevaFecha = new FechaTutoria(periodo, sesion, fechaInicio, fechaFin);
         
-        // 4. Guardar en Base de Datos
+      
         try {
-            // Opcional: Verificar si ya existe esa sesión en ese periodo para no duplicar
+            
             boolean existe = FechaTutoriaDAO.comprobarExistenciaSesion(periodo, sesion);
             if (existe) {
                 mostrarAlerta("Duplicado", "Ya existe una configuración para la Sesión " + sesion + " en este periodo.", Alert.AlertType.WARNING);

@@ -28,14 +28,6 @@
          </cursor>
       </Button>
       
-      <Button fx:id="btnModificar" layoutX="193.0" layoutY="200.0" mnemonicParsing="false" onAction="#clicModificarProblematica" prefHeight="40.0" prefWidth="215.0" text="Consultar/Modificar">
-         <font>
-            <Font size="14.0" />
-         </font>
-         <cursor>
-            <Cursor fx:constant="HAND" />
-         </cursor>
-      </Button>
-
+    
    </children>
 </AnchorPane>

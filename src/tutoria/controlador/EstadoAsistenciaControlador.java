@@ -14,8 +14,8 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.ToggleGroup;
 import javafx.stage.Stage;
 import tutoria.modelo.pojo.Tutorado;
-import tutoria.modelo.dao.TutoradoDAO; // Asegúrate de importar tu DAO
-import tutoria.modelo.ConexionDB;      // Asegúrate de importar tu Conexión
+import tutoria.modelo.dao.TutoradoDAO; 
+import tutoria.modelo.ConexionDB;      
 
 public class EstadoAsistenciaControlador implements Initializable {
 
@@ -40,7 +40,7 @@ public class EstadoAsistenciaControlador implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Todo se inicializa en inicializarDatosParaEdicion
+     
     }
 
     public void inicializarDatosParaEdicion(Tutorado tutorado, int numeroPersonal, int accion) {
@@ -52,7 +52,7 @@ public class EstadoAsistenciaControlador implements Initializable {
             lbNombreAlumno.setText(tutoradoEdicion.getNombre());
             lbMatricula.setText(tutoradoEdicion.getMatricula());
 
-            // Lógica para precargar datos si es edición
+            
             if (accion > 0) {
                 txtObservaciones.setText(tutoradoEdicion.getObservaciones());
                 String estatus = tutoradoEdicion.getEstado();
@@ -85,7 +85,7 @@ public class EstadoAsistenciaControlador implements Initializable {
 
     @FXML
     public void guardar(ActionEvent event) {
-        // 1. Validar selección y "Traducir" para la Base de Datos
+        
         String estatusBD = null;
 
         if (rbAsistio.isSelected()) {
@@ -101,19 +101,16 @@ public class EstadoAsistenciaControlador implements Initializable {
             return;
         }
 
-        // 2. Obtener Observaciones
+     
         String observaciones = txtObservaciones.getText();
 
-        // 3. Conexión a Base de Datos
         Connection conexion = ConexionDB.abrirConexionBD();
 
         if (conexion != null) {
             boolean exito = false;
 
             try {
-                // SOLO REGISTRAR (INSERT) como pediste
-                // Si el alumno ya tiene asistencia, esto podría duplicar o fallar dependiendo de tu BD,
-                // pero aquí está el código limpio para guardar
+               
                 System.out.println("llegué3.1"+this.numeroPersonal);
                 exito = TutoradoDAO.registrarAsistencia(
                         tutoradoEdicion.getMatricula(),
@@ -128,7 +125,7 @@ public class EstadoAsistenciaControlador implements Initializable {
                 e.printStackTrace();
             }
 
-            // 4. Cerrar ventana si todo salió bien
+           
             if (exito) {
                 mostrarAlerta("Éxito", "Información guardada correctamente.");
                 Stage stage = (Stage) txtObservaciones.getScene().getWindow();

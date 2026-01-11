@@ -95,7 +95,7 @@ public class InicioSesionControlador implements Initializable {
   private void irPantallaPrincipal(Profesor profesorSesion) {
       
     try {
-      FXMLLoader cargador = new FXMLLoader(Tutoria.class.getResource("vistas/FXMLPrincipal.fxml"));
+      FXMLLoader cargador = new FXMLLoader(Tutoria.class.getResource("vistas/Principal.fxml"));
       Parent vista = cargador.load();
       PrincipalControlador controlador = cargador.getController();
       controlador.obtenerSesion(profesorSesion);

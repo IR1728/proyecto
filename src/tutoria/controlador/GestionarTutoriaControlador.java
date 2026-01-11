@@ -125,7 +125,7 @@ public class GestionarTutoriaControlador implements Initializable {
     @FXML
     private void modificarHorario(ActionEvent event){
         if (esTutor()) {
-            navegarA("Administración de horario", "ListaTutorias", 2);
+            navegarA("Administración de horario", "ListaTutoria", 2);
         } else {
             Utilidades.mostrarAlertaSimple("Acceso Denegado", "Se requiere rol de Tutor.", Alert.AlertType.WARNING);
         }

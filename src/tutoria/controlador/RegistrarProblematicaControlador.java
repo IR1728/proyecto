@@ -18,7 +18,6 @@ import tutoria.modelo.pojo.Tutorado;
 
 public class RegistrarProblematicaControlador implements Initializable {
 
-    // Componentes del FXML
     @FXML
     private Label lbNombreAlumno;
     @FXML
@@ -30,18 +29,15 @@ public class RegistrarProblematicaControlador implements Initializable {
     @FXML
     private Button btnCancelar;
     
-    // Variable auxiliar para guardar la matrícula del alumno seleccionado
+
     private String matriculaAlumno;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // Inicialización por defecto
+       
     }    
 
-    /**
-     * Recibe el objeto Tutorado desde la ventana anterior.
-     * Usa los métodos de tu clase Tutorado.java
-     */
+   
     public void inicializarDatos(Tutorado alumnoSeleccionado) {
         if (alumnoSeleccionado != null) {
             this.matriculaAlumno = alumnoSeleccionado.getMatricula();
@@ -54,7 +50,7 @@ public class RegistrarProblematicaControlador implements Initializable {
 
     @FXML
     private void clicGuardar(ActionEvent event) {
-        // 1. Validar campos vacíos
+    
         String titulo = tfTitulo.getText();
         String descripcion = taDescripcion.getText();
         
@@ -63,13 +59,13 @@ public class RegistrarProblematicaControlador implements Initializable {
             return;
         }
         
-        // 2. Crear el objeto POJO de la problemática
+       
         Problematica nuevaProblematica = new Problematica();
         nuevaProblematica.setTitulo(titulo);
         nuevaProblematica.setDescripcion(descripcion);
-        nuevaProblematica.setMatricula(matriculaAlumno); // Usamos la matrícula del Tutorado
+        nuevaProblematica.setMatricula(matriculaAlumno); 
         
-        // 3. Enviar a la Base de Datos
+       
         try {
             boolean resultado = ProblematicaDAO.registrarProblematica(nuevaProblematica);
             

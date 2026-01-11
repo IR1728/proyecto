@@ -54,7 +54,7 @@ public class AsignarTutoradoControlador implements Initializable {
 
     private void cargarDatosTabla() {
         try {
-            // Carga todos los alumnos para que el coordinador decida
+            
             ArrayList<Tutorado> datosBD = TutoradoDAO.obtenerTodosLosTutorados(ConexionDB.abrirConexionBD());
             ObservableList<Tutorado> listaTutorados = FXCollections.observableArrayList(datosBD);
             tvTutorados.setItems(listaTutorados);

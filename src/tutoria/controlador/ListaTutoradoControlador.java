@@ -145,9 +145,6 @@ public class ListaTutoradoControlador implements Initializable {
     }
 
 
-
-    // MÉTODO RESTAURADO A INT
-
     public void asignarNumeroPersonal(int numeroPersonal, int accion){
 System.out.println("llegué aquí"+ numeroPersonal + accion );
         this.accion = accion;
@@ -190,7 +187,6 @@ System.out.println("llegué aquí"+ numeroPersonal + accion );
 
 
 
-            // Asegúrate que EstadoAsistenciaControlador reciba INT también
             if(this.accion== 3 ){
                 
                         EstadoAsistenciaControlador controlador = loader.getController();
@@ -233,7 +229,6 @@ System.out.println("llegué aquí"+ numeroPersonal + accion );
 
     
 
-    // CÓDIGO RESTAURADO
 
     @FXML
 
@@ -257,7 +252,7 @@ System.out.println("llegué aquí"+ numeroPersonal + accion );
 
              if (accion == 1) {
 
-                // Gestionar Horario - Enviamos el INT
+              
 
                 GestionarHorarioControlador controlador = cargador.getController();
 
@@ -295,7 +290,7 @@ System.out.println("llegué aquí"+ numeroPersonal + accion );
 
         try {
 
-            // DAO recibe INT
+            
 
             ArrayList<Tutorado> datosBD = TutoradoDAO.obtenerTutoradosPorProfesor(this.numeroPersonal, ConexionDB.abrirConexionBD());
 
