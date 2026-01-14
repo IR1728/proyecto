@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import tutoria.modelo.pojo.Tutorado;
 
 public class TutoradoDAO {
-    // AGREGAR EN TutoradoDAO.java
+    
 public static ArrayList<Tutorado> obtenerTodosLosTutorados(Connection conexion) throws SQLException {
     ArrayList<Tutorado> lista = new ArrayList<>();
     if (conexion != null) {
-        // Traemos a TODOS los alumnos (para el Coordinador)
+        
         String sql = "SELECT matricula, nombre, carrera FROM tutorados";
         
         java.sql.PreparedStatement ps = conexion.prepareStatement(sql);
@@ -72,11 +72,10 @@ public static ArrayList<Tutorado> obtenerTodosLosTutorados(Connection conexion) 
                 t.setNombre(rs.getString("nombre"));
                 t.setCarrera(rs.getString("carrera"));
                 
-                // CAMBIO 3: Recuperamos los nuevos datos necesarios para la edición
-                // getInt devuelve 0 si el campo es nulo (perfecto para saber si es nuevo registro)
+               
                 t.setIdAsistencia(rs.getInt("id_asistencia")); 
                 
-                // Recuperamos estatus y observaciones
+              
                 String estatus = rs.getString("estado");
                 String observaciones = rs.getString("observaciones");
                 
@@ -84,8 +83,7 @@ public static ArrayList<Tutorado> obtenerTodosLosTutorados(Connection conexion) 
                 t.setObservaciones(observaciones);
                 t.setProblematica(rs.getString("descripcion"));
                 
-                // Usamos el estatus para llenar la columna visual 'Evaluado'
-                // Si es null (no tiene asistencia), aparecerá como null en la tabla (o puedes poner "Pendiente")
+               
                 t.setEvaluado(estatus);
                 
                 lista.add(t);
@@ -96,9 +94,7 @@ public static ArrayList<Tutorado> obtenerTodosLosTutorados(Connection conexion) 
         return lista;
     }
   
-    /**
-     * Asigna (o reasigna) un tutor a un alumno específico.
-     */
+    
     public static boolean asignarTutorAAlumno(String matricula, int noPersonal, Connection conexion) throws SQLException {
         boolean resultado = false;
         if(conexion != null){

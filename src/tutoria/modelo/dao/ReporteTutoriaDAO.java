@@ -10,7 +10,7 @@ import tutoria.modelo.pojo.ReporteTutoria;
 
 public class ReporteTutoriaDAO {
 
-    // 1. Registrar un nuevo reporte
+  
     public static boolean registrarReporte(ReporteTutoria reporte) throws SQLException {
         boolean resultado = false;
         Connection conn = ConexionDB.abrirConexionBD();
@@ -22,7 +22,7 @@ public class ReporteTutoriaDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, reporte.getDescripcion());
             ps.setString(2, reporte.getComentariosGenerales());
-            ps.setString(3, "Guardado"); // Por defecto se crea como Guardado (Borrador)
+            ps.setString(3, "Guardado"); 
             ps.setInt(4, reporte.getIdFechaTutoria());
             ps.setInt(5, reporte.getNoPersonal());
             
@@ -34,7 +34,7 @@ public class ReporteTutoriaDAO {
         return resultado;
     }
 
-    // 2. Obtener reportes de un tutor (con JOIN para saber de qué periodo son)
+    
     public static ArrayList<ReporteTutoria> obtenerReportesPorTutor(int noPersonal) throws SQLException {
         ArrayList<ReporteTutoria> lista = new ArrayList<>();
         Connection conn = ConexionDB.abrirConexionBD();
@@ -67,7 +67,7 @@ public class ReporteTutoriaDAO {
         return lista;
     }
     
-    // 3. Validar si ya existe un reporte para esa sesión y ese profesor
+
     public static boolean comprobarExistenciaReporte(int idFecha, int noPersonal) throws SQLException {
         boolean existe = false;
         Connection conn = ConexionDB.abrirConexionBD();

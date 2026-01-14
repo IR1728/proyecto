@@ -111,7 +111,7 @@ public class EstadoAsistenciaControlador implements Initializable {
 
             try {
                
-                System.out.println("llegué3.1"+this.numeroPersonal);
+                
                 exito = TutoradoDAO.registrarAsistencia(
                         tutoradoEdicion.getMatricula(),
                         this.numeroPersonal,

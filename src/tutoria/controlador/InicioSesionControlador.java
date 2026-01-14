@@ -47,7 +47,7 @@ public class InicioSesionControlador implements Initializable {
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
     }    
     @FXML
     private void login(ActionEvent event) {

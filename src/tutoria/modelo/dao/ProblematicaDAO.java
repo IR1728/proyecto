@@ -10,20 +10,19 @@ import tutoria.modelo.pojo.Problematica;
 
 public class ProblematicaDAO {
 
-    // Método para REGISTRAR una nueva problemática
     public static boolean registrarProblematica(Problematica p) throws SQLException {
         boolean resultado = false;
         Connection conn = ConexionDB.abrirConexionBD();
         
         if (conn != null) {
-            // Usamos CURDATE() de SQL para guardar la fecha del servidor automáticamente
+         
             String sql = "INSERT INTO problematica (titulo, descripcion, fechaRegistro, matricula) "
                        + "VALUES (?, ?, CURDATE(), ?)";
             
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, p.getTitulo());
             ps.setString(2, p.getDescripcion());
-            ps.setString(3, p.getMatricula()); // Importante: Aquí va la matrícula del alumno
+            ps.setString(3, p.getMatricula()); 
             
             int filasAfectadas = ps.executeUpdate();
             resultado = (filasAfectadas > 0);
@@ -34,7 +33,7 @@ public class ProblematicaDAO {
         return resultado;
     }
 
-    // Método para CONSULTAR problemáticas de un alumno específico
+   
     public static ArrayList<Problematica> obtenerProblematicasPorAlumno(String matricula) throws SQLException {
         ArrayList<Problematica> lista = new ArrayList<>();
         Connection conn = ConexionDB.abrirConexionBD();

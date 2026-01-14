@@ -2,7 +2,7 @@ package tutoria.modelo.pojo;
 
 public class Profesor {
     
-    // CAMBIO: Ahora es int (coincide con la Base de Datos)
+   
     private int noPersonal; 
     
     private int idProfesor;
@@ -16,7 +16,7 @@ public class Profesor {
     public Profesor() {
     }
 
-    // --- GETTER Y SETTER CORREGIDOS (INT) ---
+   
     public int getNoPersonal() {
         return noPersonal;
     }

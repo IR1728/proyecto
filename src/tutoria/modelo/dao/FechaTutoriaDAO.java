@@ -24,7 +24,7 @@ public class FechaTutoriaDAO {
             PreparedStatement ps = conn.prepareStatement(sql);
             ps.setString(1, fecha.getPeriodo());
             ps.setInt(2, fecha.getNumeroSesion());
-            ps.setString(3, fecha.getFechaInicio()); // Se guarda como String (YYYY-MM-DD)
+            ps.setString(3, fecha.getFechaInicio()); 
             ps.setString(4, fecha.getFechaFin());
             
             int filasAfectadas = ps.executeUpdate();

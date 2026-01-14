@@ -13,7 +13,7 @@ public class ProfesorDAO {
         ArrayList<Profesor> lista = new ArrayList<>();
         
         if (conexion != null) {
-            // Pedimos las columnas correctas
+        
             String sql = "SELECT idProfesor, noPersonal, nombre, apellidoPaterno, apellidoMaterno FROM profesor";
             
             PreparedStatement ps = conexion.prepareStatement(sql);
@@ -23,8 +23,7 @@ public class ProfesorDAO {
                 Profesor p = new Profesor();
                 p.setIdProfesor(rs.getInt("idProfesor"));
                 
-                // CAMBIO: Lectura directa. int de la BD -> int del Objeto
-                // Sin conversiones raras.
+               
                 p.setNoPersonal(rs.getInt("noPersonal")); 
                 
                 p.setNombre(rs.getString("nombre"));

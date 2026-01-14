@@ -34,22 +34,20 @@ public class PrincipalControlador {
             FXMLLoader cargador = new FXMLLoader(Tutoria.class.getResource("vistas/" + nombreArchivo + ".fxml"));
             Parent vista = cargador.load();
 
-            // CASO 1: GESTIONAR TUTORÍA (Menú Secundario)
+          
             if (accion == 2) {
                 GestionarTutoriaControlador controlador = cargador.getController();
                 try {
                     int numPersonal = Integer.parseInt(lbNumPersonal.getText());
                     String rol = lbRol.getText(); 
                     controlador.inicializarDatos(numPersonal, rol);
-                    // -----------------------------
-                    
+                   
                 } catch (NumberFormatException e) {
                     Utilidades.mostrarAlertaSimple("Error", "El número de personal no es válido.", Alert.AlertType.ERROR);
                     return;
                 }
             } 
             
-            // CASO 2: GESTIONAR PROBLEMÁTICAS
             else if (accion == 5) {
                 GestionarProblematicaControlador controlador = cargador.getController();
                 try {
@@ -61,7 +59,7 @@ public class PrincipalControlador {
                 }
             }
 
-            // CASO 3: COORDINADOR
+      
             else if (accion == 4) {
                 AsignarTutoradoControlador controlador = cargador.getController();
             }
@@ -95,8 +93,6 @@ public class PrincipalControlador {
     
     @FXML
     private void gestionarTutoria(ActionEvent event){
-        // Validación inicial para entrar al menú
-        // (Aunque luego validaremos cada botón dentro, es bueno validar aquí también)
         navegarA("Gestionar Horario", "GestionarTutoria", 2);
     }
   

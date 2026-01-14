@@ -14,8 +14,8 @@ public class ConexionDB {
   private static final String PUERTO = "3306";
   private static final String URL_CONEXION = "jdbc:mysql://"
     + IP + ":" + PUERTO + "/" + NOMBRE_BD + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
-  private static final String USUARIO = "root";
-  private static final String PASSWORD = "sierra117";
+  private static final String USUARIO = "usuario";
+  private static final String PASSWORD = "contrasena";
   private static Connection CONEXION = null;
 
   public static Connection abrirConexionBD() {

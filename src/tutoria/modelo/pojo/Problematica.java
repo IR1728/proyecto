@@ -5,8 +5,8 @@ public class Problematica {
     private int idProblematica;
     private String titulo;
     private String descripcion;
-    private String fechaRegistro; // Lo manejaremos como String para facilitar visualización en Tabla
-    private String matricula;     // ID del alumno afectado
+    private String fechaRegistro;
+    private String matricula;     
 
     public Problematica() {
     }
@@ -17,7 +17,6 @@ public class Problematica {
         this.matricula = matricula;
     }
 
-    // --- Getters y Setters ---
 
     public int getIdProblematica() {
         return idProblematica;

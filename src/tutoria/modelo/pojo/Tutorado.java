@@ -17,8 +17,8 @@ public class Tutorado {
     public void setProblematica(String problematica) {
         this.problematica = problematica;
     }
-    
-    // AGREGEGADO: Necesario para la asignación y filtrado por tutor
+   
+  
     private int fkTutor; 
     
     public Tutorado() {}
@@ -76,7 +76,6 @@ public class Tutorado {
         this.idAsistencia = idAsistencia;
     }
 
-    // GETTER Y SETTER PARA EL TUTOR (INT)
     public int getFkTutor() {
         return fkTutor;
     }

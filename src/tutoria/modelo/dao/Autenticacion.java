@@ -12,7 +12,6 @@ public class Autenticacion{
    
 
     if (conexionBD != null) {
-      //Hay conexion con la BD
       String consulta = "SELECT idProfesor, nombre, "
         + "apellidoPaterno, apellidoMaterno, noPersonal, p.idRol, nombreRol "
         + "FROM profesor p "

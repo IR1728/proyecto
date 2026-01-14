@@ -23,7 +23,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import tutoria.modelo.ConexionDB;
 import tutoria.modelo.dao.HorarioDAO;
-import tutoria.modelo.pojo.Horario; // Asegúrate de importar tu POJO Horario
+import tutoria.modelo.pojo.Horario; 
 
 public class ListaTutoriaControlador implements Initializable {
 
@@ -45,7 +45,7 @@ public class ListaTutoriaControlador implements Initializable {
     private int accion;
     
 
-    // Lista observable para la tabla
+    
     private ObservableList<Horario> listaHorarios;
 
     @Override
@@ -80,15 +80,14 @@ public class ListaTutoriaControlador implements Initializable {
 
 
     try {
-        // Obtenemos los datos del DAO
+       
         ArrayList<Horario> datosBD = HorarioDAO.obtenerDatosHorario(this.numeroPersonal, ConexionDB.abrirConexionBD());
         
     
-        
-        // Convertimos a ObservableList
+       
         listaHorarios = FXCollections.observableArrayList(datosBD);
         
-        // Asignamos a la tabla
+        
         tvTutorias.setItems(listaHorarios);
         
         
@@ -110,18 +109,15 @@ public class ListaTutoriaControlador implements Initializable {
     }
     private void irAPantallaEdicion(Horario horario) {
     try {
-        // 1. Cargar el FXML de la ventana de edición (Ajusta el nombre de tu archivo)
+        
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/tutoria/vistas/GestionarHorario.fxml"));
         Parent root = loader.load();
 
-        // 2. Obtener el controlador de la nueva ventana
         GestionarHorarioControlador controlador = loader.getController();
 
-        // 3. PASAR LOS DATOS (Necesitas crear este método en GestionarHorarioControlador)
-        // Le pasamos el horario completo para que llene los campos automáticamente
+        
         controlador.inicializarDatosParaEdicion(horario,this.numeroPersonal,2); 
 
-        // 4. Mostrar la ventana
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -129,7 +125,7 @@ public class ListaTutoriaControlador implements Initializable {
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
         
-        // 5. Opcional: Recargar la tabla al cerrar la edición para ver los cambios
+        
         cargarDatosTabla(); 
 
     } catch (IOException ex) {

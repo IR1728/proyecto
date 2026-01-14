@@ -16,7 +16,7 @@ public class AutenticacionImplementacion {
       ResultSet resultado = Autenticacion.autenticarUsuario(noPersonal, password, ConexionDB.abrirConexionBD());
 
       if (resultado.next()) {
-        //Credenciales correctas
+      
         Profesor profesorSesion = new Profesor();
         
         profesorSesion.setIdProfesor(resultado.getInt("idProfesor"));

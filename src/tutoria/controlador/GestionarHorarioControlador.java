@@ -110,7 +110,6 @@ public void inicializarDatosParaEdicion(Horario horario,int numeroPersonal,int a
     this.numeroPersonal=numeroPersonal;
     this.idHorario=horario.getIdHorario();
     this.accion=accion;
-    System.out.println("horario"+this.horarioEdicion.toString()+this.horarioEdicion.getHora()+this.horarioEdicion.getLugar()+this.horarioEdicion.getFecha()+this.horarioEdicion.getModalidad()+this.horarioEdicion.getIdHorario());
     txtHora.setText(horario.getHora());
     txtLugar.setText(horario.getLugar());
     cmbModalidad.setValue(horario.getModalidad());
